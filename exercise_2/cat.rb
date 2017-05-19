@@ -54,8 +54,13 @@ end
 mavis = Cat.new('Mavis', 'potato chips', 9)
 batman = Cat.new('Batman', 'canned tuna', 17)
 
-# output:
+# Call the meow method on each of the cats you instantiated in Step 3
+# Use puts to have the program output the result to the terminal
+
 mavis.eats_at
 mavis.meow
 batman.eats_at
 batman.meow
+
+# 'Puts' is already built-in to each method.
+# Calling both methods, to be sure everything works.
