@@ -30,7 +30,21 @@ class Cat
   # The return value should be something like "My name
   # is Sparkles and I eat tuna at 11 AM"
   def meow
-      puts "My name is #{ @name }. I eat #{ @preferred_food } at #{ eats_at }"
+    if @meal_time <= 11
+      meow_meal_time = @meal_time.to_s
+      meow_meal_time << ":00 AM"
+      @meow_meal_time = meow_meal_time
+    elsif @meal_time == 12
+      meow_meal_time = @meal_time.to_s
+      meow_meal_time << ":00 PM"
+      @meow_meal_time = meow_meal_time
+    elsif @meal_time >= 13
+      meow_meal_time = (@meal_time - 12)
+      meow_meal_time = meow_meal_time.to_s
+      meow_meal_time << ":00 PM"
+      @meow_meal_time = meow_meal_time
+    end
+      puts "'My name is #{ @name }. I eat #{ @preferred_food } at #{ @meow_meal_time }.'"
   end
 end
 
@@ -40,5 +54,8 @@ end
 mavis = Cat.new('Mavis', 'potato chips', 9)
 batman = Cat.new('Batman', 'canned tuna', 17)
 
+# output:
 mavis.eats_at
 mavis.meow
+batman.eats_at
+batman.meow
