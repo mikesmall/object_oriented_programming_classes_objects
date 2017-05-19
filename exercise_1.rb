@@ -30,7 +30,18 @@ class BankAccount
 
   # a gain_interest instance method that increases the total balance according to the interest rate
   def gain_interest
-    
+    # Assuming 2% interest rate would be entered as 2,
+    # Divide rate by 100, to create 0.02 -- then
+    # Add 1, to create 1.02 -- then
+    # Multiply @balance by 1.02
+
+    interest_div = @interest_rate / 100.0  # changes 2 to 0.02
+
+    interest_add = interest_div + 1      # changes 0.02 to 1.02
+
+    @balance = @balance * interest_add
+
+    puts "Your money accumulated interest. Now your balance is $#{ @balance }."
   end
 
   def report
@@ -47,6 +58,8 @@ new_customer.report
 new_customer.deposit
 
 new_customer.withdraw
+
+new_customer.gain_interest
 
 
 
