@@ -30,16 +30,37 @@ class Player
     end #if
   end #collect_treasure
 
+  # The restart instance method should set all attributes back to their starting values (5, 0, and 10).
+  def restart
+    @lives == 5
+    @gold_coins == 0
+    @health_points == 10
+  end #restart
 
+  # Your class should have an instance method called do_battle that accepts one damage argument and subtracts it from the player's health_points. If health_points falls below one, subtract one from lives and reset health_points to ten. If you have run out of lives, this method should run another method called restart (see below).
+
+  def do_battle
+    @health_points = @health_points -= 1
+    puts "Battle! You lost a health point. You're down to #{ @health_points }."
+    if @health_points <= 0
+      @lives = @lives -= 1
+      puts "You lost a life! You now have #{ @lives } lives."
+      if @lives <= 0
+        puts "You ran out of lives! Restarting game now."
+        restart
+      end #if-lives
+    end #if health_points
+  end #do_battle
 end #Player
 
 # Test output:
 mike = Player.new(5, 0, 10)
 mike.level_up
 mike.collect_treasure
+mike.do_battle
 
 
 
-# Your class should have an instance method called do_battle that accepts one damage argument and subtracts it from the player's health_points. If health_points falls below one, subtract one from lives and reset health_points to ten. If you have run out of lives, this method should run another method called restart (see below).
+
 
 # The restart instance method should set all attributes back to their starting values (5, 0, and 10).
