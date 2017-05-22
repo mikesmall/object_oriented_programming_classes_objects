@@ -57,8 +57,13 @@ class Paperboy
 end #class:Paperboy
 
 dougie = Paperboy.new("Dougie", 0, 0)
-# Sample code for test output
+# Trip One
 dougie.quota # => 50
 dougie.deliver(101, 160) # => 17.5
 dougie.earnings #=> 17.5
 dougie.report # => "I'm Tommy, I've delivered 60 papers and I've earned $17.5 so far!"
+# Trip Two 
+dougie.quota # => 80
+dougie.deliver(1, 75) # => 16.75
+dougie.earnings #=> 34.25
+dougie.report # => "I'm Tommy, I've been delivered 135 papers and I've earned $34.25 so far!"
