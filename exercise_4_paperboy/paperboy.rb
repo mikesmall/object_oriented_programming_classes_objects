@@ -31,7 +31,7 @@ class Paperboy
 
     days_earnings = 0.00
     # This method will take two house numbers and return the amount of money earned on this delivery as a floating point number.
-    total_houses = end_address - start_address + 1
+    total_houses = (end_address - start_address).abs + 1
     # If at the end of the day they haven't met their quota, they lose $2.
     if
       total_houses < quota
@@ -59,11 +59,11 @@ end #class:Paperboy
 dougie = Paperboy.new("Dougie", 0, 0)
 # Trip One
 dougie.quota # => 50
-dougie.deliver(101, 160) # => 17.5
+dougie.deliver(160, 101) # => 17.5
 dougie.earnings #=> 17.5
 dougie.report # => "I'm Tommy, I've delivered 60 papers and I've earned $17.5 so far!"
-# Trip Two 
+# Trip Two
 dougie.quota # => 80
-dougie.deliver(1, 75) # => 16.75
+dougie.deliver(75, 1) # => 16.75
 dougie.earnings #=> 34.25
 dougie.report # => "I'm Tommy, I've been delivered 135 papers and I've earned $34.25 so far!"
