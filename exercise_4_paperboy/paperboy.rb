@@ -19,44 +19,44 @@ class Paperboy
   end #quota
 
 
-  # This method should calculate and return the paperboy's quota for his next delivery.
+    # This method should calculate and return the paperboy's quota for his next delivery.
     # It should also update the paperboy's experience!
     # start_address is always a smaller number than the end_address
-
     # So the first time a paperboy makes a delivery, the quota is 50. The next time, the quote is 50 plus half the number of papers that the paperboy has delivered in the past. In this way the quota should increase after every delivery the paperboy makes.
-
     # Every day, each paperboy is given a house number to start at and a house number to finish at.
-
-    # They get paid $0.25 for every paper they deliver
-    # and $0.50 for every paper over their quota.
+              # They get paid $0.25 for every paper they deliver
+              # and $0.50 for every paper over their quota.
 
   def deliver(start_address, end_address)
 
-    money_earned = 0.0
-
+    days_earnings = 0.00
     # This method will take two house numbers and return the amount of money earned on this delivery as a floating point number.
-    total_houses = end_address - start_address
-
+    total_houses = end_address - start_address + 1
     # If at the end of the day they haven't met their quota, they lose $2.
-    if total_houses < quota
-      money_earned = money_earned - 2
+    if
+      total_houses < quota
+      days_earnings = days_earnings + total_houses * 0.25 - 2
+    elsif
+      days_earnings = (total_houses - quota) * 0.50 + (quota * 0.25)
+    else
+      days_earnings = days_earnings + total_houses * 0.25
     end
 
     @experience += total_houses
-    @earnings += money_earned
+    @earnings += days_earnings
 
-    return money_earned
+    return days_earnings
 
   end #deliver
 
-  # This method should return a string about the paperboy's performance
-  # e.g. "I'm Tommy, I've delivered 90 papers and I've earned $38.25 so far!"
   def report
-    puts "Hi. I'm #{ @name }. I delivered #{ @experience } papers, and I only made $#{ @earnings }!"
+    puts "Hi. My name's #{ @name }."
+    puts "I delivered #{ @experience } papers,"
+    puts "and I only made $#{ @earnings }!"
   end #report
 end #class:Paperboy
 
-dougie = Paperboy.new("Dougie",0,0)
+dougie = Paperboy.new("Dougie", 0, 0)
 # Sample code for test output
 dougie.quota # => 50
 dougie.deliver(101, 160) # => 17.5
